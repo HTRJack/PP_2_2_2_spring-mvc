@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div th:if="${ not#lists.isEmpty(cars)}">
+    <table border="1">
+        <tr>
+            <th>Brand</th>
+            <th>Model</th>
+            <th>maxSpeed</th>
+        </tr>
+        <tr th:each="car : ${cars}">
+            <th th:text="${car.brand}"></th>
+            <th th:text="${car.model}"></th>
+            <th th:text="${car.maxSpeed}"></th>
+        </tr>
+    <table>
+</div>
+</body>
+</html>
