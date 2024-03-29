@@ -8,17 +8,27 @@ import java.util.List;
 
 @Service
 public class CarService {
+    private static List<Car> cars;
 
+    public static List<Car> getNCars(int count) {
 
-    public static List<Car> getNCars(List<Car> cars, int count) {
+        if (cars == null) {
+            initCarList();
+        }
 
         if (count >= cars.size()) {
             return cars;
+        } else {
+            return cars.stream().limit(count).toList();
         }
-        List<Car> result = new ArrayList<>();
-        for (int i = 0; i < count; i++) {
-            result.add(cars.get(i));
-        }
-        return result;
+    }
+
+    private static void initCarList() {
+        cars = new ArrayList<>();
+        cars.add(new Car("VW", "Polo", 69));
+        cars.add(new Car("Bugatti", "Veyron", 407));
+        cars.add(new Car("Lada", "Vesta", 13));
+        cars.add(new Car("Vedro", "Plast", 666));
+        cars.add(new Car("Porsche", "911", 300));
     }
 }
